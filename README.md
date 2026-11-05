@@ -1,5 +1,7 @@
 # Laravel Product Management System & Automated WhatsApp Notification
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/pooj25/automated-message)
+
 This project is a Product & Customer Management System built using Laravel, integrated with a self-hosted **OpenWA WhatsApp API Gateway** (`rmyndharis/OpenWA`) for real-time automated messaging.
 
 ## Features
