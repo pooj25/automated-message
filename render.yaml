@@ -6,15 +6,19 @@ services:
     region: singapore
     envVars:
       - key: APP_ENV
-        value: production
+        value: local
       - key: APP_DEBUG
-        value: "false"
+        value: "true"
       - key: APP_KEY
-        generateValue: true
+        value: base64:Y2wrycSXrN4lYSl5zTwWVz8ajriAp7YPfn/MMeKkvyc=
       - key: DB_CONNECTION
         value: sqlite
       - key: DB_DATABASE
         value: /var/www/html/database/database.sqlite
+      - key: SESSION_DRIVER
+        value: file
+      - key: CACHE_STORE
+        value: file
       - key: OPENWA_URL
         value: https://yummy-symbols-attend.loca.lt
       - key: OPENWA_API_KEY
