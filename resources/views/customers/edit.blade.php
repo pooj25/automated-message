@@ -2,27 +2,22 @@
 
 @section('content')
 
-<div class="flex flex-col md:flex-row justify-between items-center mb-10">
-    <div>
-        <h2 class="text-4xl font-extrabold text-slate-900 mb-2">
-            Edit <span class="text-gradient">Customer</span>
-        </h2>
-        <p class="text-slate-500 text-lg">
-            Update customer information.
+<div class="max-w-5xl mx-auto py-10 px-4">
+
+    <!-- Header -->
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-800">
+            Edit Customer
+        </h1>
+
+        <p class="text-gray-500 mt-2">
+            Update customer information
         </p>
     </div>
 
-    <div class="mt-6 md:mt-0">
-        <a href="{{ route('customers.index') }}" class="px-6 py-3 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold transition">
-            Back to Customers
-        </a>
-    </div>
-</div>
-
-<div class="glass-panel p-8 rounded-2xl">
-
+    <!-- Validation Errors -->
     @if ($errors->any())
-        <div class="mb-6 p-5 rounded-xl bg-red-50 border border-red-200 text-red-700">
+        <div class="mb-6 bg-red-50 border border-red-200 text-red-700 rounded-xl p-4">
             <ul class="list-disc list-inside">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -31,143 +26,245 @@
         </div>
     @endif
 
-    <form action="{{ route('customers.update', $customer->id) }}" method="POST">
+    <!-- Edit Customer Form -->
+    <div class="glass-panel rounded-2xl p-6 md:p-8">
 
-        @csrf
-        @method('PUT')
+        <form action="{{ route('customers.update', $customer) }}" method="POST">
+            @csrf
+            @method('PUT')
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            <div>
-                <label class="block text-sm font-bold text-slate-700 mb-2">
-                    Customer Name
-                </label>
+                <!-- Customer Name -->
+                <div>
+                    <label class="block text-sm font-semibold mb-2">
+                        Customer Name
+                    </label>
 
-                <input
-                    type="text"
-                    name="name"
-                    value="{{ old('name', $customer->name) }}"
-                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    required
+                    <input
+                        type="text"
+                        name="name"
+                        value="{{ old('name', $customer->name) }}"
+                        class="input-premium w-full"
+                        placeholder="Enter customer name"
+                        required
+                    >
+
+                    @error('name')
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <!-- Phone -->
+                <div>
+                    <label class="block text-sm font-semibold mb-2">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="text"
+                        name="phone"
+                        value="{{ old('phone', $customer->phone) }}"
+                        class="input-premium w-full"
+                        placeholder="Enter phone number"
+                        required
+                    >
+
+                    @error('phone')
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="block text-sm font-semibold mb-2">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        value="{{ old('email', $customer->email) }}"
+                        class="input-premium w-full"
+                        placeholder="Enter email address"
+                    >
+
+                    @error('email')
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <!-- Status -->
+                <div>
+                    <label class="block text-sm font-semibold mb-2">
+                        Status
+                    </label>
+
+                    <select
+                        name="status"
+                        class="input-premium w-full"
+                        required
+                    >
+                        <option value="Active"
+                            {{ old('status', $customer->status) == 'Active' ? 'selected' : '' }}>
+                            Active
+                        </option>
+
+                        <option value="Inactive"
+                            {{ old('status', $customer->status) == 'Inactive' ? 'selected' : '' }}>
+                            Inactive
+                        </option>
+                    </select>
+
+                    @error('status')
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <!-- Customer Type -->
+                <div>
+                    <label class="block text-sm font-semibold mb-2">
+                        Customer Type
+                    </label>
+
+                    <select
+                        name="customer_type"
+                        class="input-premium w-full"
+                        required
+                    >
+                        <option value="Permanent Customer"
+                            {{ old('customer_type', $customer->customer_type) == 'Permanent Customer' ? 'selected' : '' }}>
+                            Permanent Customer
+                        </option>
+
+                        <option value="Temporary Customer"
+                            {{ old('customer_type', $customer->customer_type) == 'Temporary Customer' ? 'selected' : '' }}>
+                            Temporary Customer
+                        </option>
+                    </select>
+
+                    @error('customer_type')
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <!-- City -->
+                <div>
+                    <label class="block text-sm font-semibold mb-2">
+                        City
+                    </label>
+
+                    <input
+                        type="text"
+                        name="city"
+                        value="{{ old('city', $customer->city) }}"
+                        class="input-premium w-full"
+                        placeholder="Enter city"
+                    >
+
+                    @error('city')
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <!-- State -->
+                <div>
+                    <label class="block text-sm font-semibold mb-2">
+                        State
+                    </label>
+
+                    <input
+                        type="text"
+                        name="state"
+                        value="{{ old('state', $customer->state) }}"
+                        class="input-premium w-full"
+                        placeholder="Enter state"
+                    >
+
+                    @error('state')
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <!-- Pincode -->
+                <div>
+                    <label class="block text-sm font-semibold mb-2">
+                        Pincode
+                    </label>
+
+                    <input
+                        type="text"
+                        name="pincode"
+                        value="{{ old('pincode', $customer->pincode) }}"
+                        class="input-premium w-full"
+                        placeholder="Enter pincode"
+                    >
+
+                    @error('pincode')
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <!-- Address -->
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-semibold mb-2">
+                        Address
+                    </label>
+
+                    <textarea
+                        name="address"
+                        rows="4"
+                        class="input-premium w-full"
+                        placeholder="Enter customer address"
+                    >{{ old('address', $customer->address) }}</textarea>
+
+                    @error('address')
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex flex-wrap gap-4 mt-8">
+
+                <button
+                    type="submit"
+                    class="btn-premium px-6 py-3"
                 >
-            </div>
+                    Update Customer
+                </button>
 
-            <div>
-                <label class="block text-sm font-bold text-slate-700 mb-2">
-                    Phone Number
-                </label>
-
-                <input
-                    type="text"
-                    name="phone"
-                    value="{{ old('phone', $customer->phone) }}"
-                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    required
+                <a
+                    href="{{ route('customers.index') }}"
+                    class="btn-outline px-6 py-3"
                 >
+                    Cancel
+                </a>
+
             </div>
 
-            <div>
-                <label class="block text-sm font-bold text-slate-700 mb-2">
-                    Email
-                </label>
+        </form>
 
-                <input
-                    type="email"
-                    name="email"
-                    value="{{ old('email', $customer->email) }}"
-                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                >
-            </div>
-
-            <div>
-                <label class="block text-sm font-bold text-slate-700 mb-2">
-                    Status
-                </label>
-
-                <select
-                    name="status"
-                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    required
-                >
-                    <option value="Active" {{ old('status', $customer->status) == 'Active' ? 'selected' : '' }}>
-                        Active
-                    </option>
-
-                    <option value="Inactive" {{ old('status', $customer->status) == 'Inactive' ? 'selected' : '' }}>
-                        Inactive
-                    </option>
-                </select>
-            </div>
-
-            <div>
-                <label class="block text-sm font-bold text-slate-700 mb-2">
-                    City
-                </label>
-
-                <input
-                    type="text"
-                    name="city"
-                    value="{{ old('city', $customer->city) }}"
-                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                >
-            </div>
-
-            <div>
-                <label class="block text-sm font-bold text-slate-700 mb-2">
-                    State
-                </label>
-
-                <input
-                    type="text"
-                    name="state"
-                    value="{{ old('state', $customer->state) }}"
-                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                >
-            </div>
-
-            <div>
-                <label class="block text-sm font-bold text-slate-700 mb-2">
-                    Pincode
-                </label>
-
-                <input
-                    type="text"
-                    name="pincode"
-                    value="{{ old('pincode', $customer->pincode) }}"
-                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                >
-            </div>
-
-            <div class="md:col-span-2">
-                <label class="block text-sm font-bold text-slate-700 mb-2">
-                    Address
-                </label>
-
-                <textarea
-                    name="address"
-                    rows="4"
-                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                >{{ old('address', $customer->address) }}</textarea>
-            </div>
-
-        </div>
-
-        <div class="mt-8 flex gap-4">
-
-            <button type="submit" class="btn-premium">
-                Update Customer
-            </button>
-
-            <a
-                href="{{ route('customers.index') }}"
-                class="px-6 py-3 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold transition"
-            >
-                Cancel
-            </a>
-
-        </div>
-
-    </form>
+    </div>
 
 </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Services\WhatsAppService;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -11,6 +12,7 @@ class CustomerController extends Controller
     {
         $query = Customer::query();
 
+        // Search
         if ($request->filled('search')) {
             $search = $request->search;
 
@@ -21,8 +23,14 @@ class CustomerController extends Controller
             });
         }
 
+        // Status filter
         if ($request->filled('status')) {
             $query->where('status', $request->status);
+        }
+
+        // Customer Type filter
+        if ($request->filled('customer_type')) {
+            $query->where('customer_type', $request->customer_type);
         }
 
         $customers = $query->latest()
@@ -37,7 +45,7 @@ class CustomerController extends Controller
         return view('customers.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, WhatsAppService $whatsapp)
     {
         $request->validate([
             'name' => 'required',
@@ -48,13 +56,24 @@ class CustomerController extends Controller
             'state' => 'nullable',
             'pincode' => 'nullable|numeric',
             'status' => 'required|in:Active,Inactive',
+            'customer_type' => 'required|in:Permanent Customer,Temporary Customer',
         ]);
 
-        Customer::create($request->all());
+        $customer = Customer::create($request->all());
+
+        // Send automated WhatsApp alert via OpenWA API
+        $alertMessage = "🔔 *CRUD App Alert - New Customer Created*\n\n"
+            . "👤 *Name:* {$customer->name}\n"
+            . "📱 *Phone:* {$customer->phone}\n"
+            . "🏷️ *Type:* {$customer->customer_type}\n"
+            . "⚡ *Status:* {$customer->status}\n"
+            . "🕒 *Time:* " . now()->format('d M Y, h:i A');
+
+        $whatsapp->sendMessage($alertMessage);
 
         return redirect()
             ->route('customers.index')
-            ->with('success', 'Customer created successfully.');
+            ->with('success', 'Customer created successfully and WhatsApp notification triggered.');
     }
 
     public function show(Customer $customer)
@@ -78,6 +97,7 @@ class CustomerController extends Controller
             'state' => 'nullable',
             'pincode' => 'nullable|numeric',
             'status' => 'required|in:Active,Inactive',
+            'customer_type' => 'required|in:Permanent Customer,Temporary Customer',
         ]);
 
         $customer->update($request->all());

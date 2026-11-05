@@ -189,6 +189,11 @@
                     Customers
                 </a>
 
+                <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-300 text-emerald-700 text-xs px-3 py-1.5 rounded-full font-semibold shadow-sm ml-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>WhatsApp Connected</span>
+                </div>
+
             </div>
 
         </div>

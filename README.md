@@ -1,10 +1,14 @@
-# Laravel Product Management System
+# Laravel Product Management System & Automated WhatsApp Notification
 
-This project is a Product Management System built using Laravel. It includes Product Management, Category Management, Supplier Management, and Product Purchase Entry functionality.
-
-The system supports product CRUD operations along with search, category filtering, stock filtering, price sorting, pagination, supplier management, purchase entries, and automatic product stock updates.
+This project is a Product & Customer Management System built using Laravel, integrated with a self-hosted **OpenWA WhatsApp API Gateway** (`rmyndharis/OpenWA`) for real-time automated messaging.
 
 ## Features
+
+### Automated WhatsApp Notification (OpenWA Integration)
+* **Real-time Event Triggers**: Automatically sends formatted WhatsApp messages when new records (such as Customers) are created.
+* **Self-Hosted Gateway**: Communicates directly with OpenWA's REST API (`POST /api/sessions/{sessionId}/messages/send-text`) with zero per-message cost.
+* **Custom Service Provider**: Encapsulated within `App\Services\WhatsAppService` for easy reuse across controllers.
+* **Live Status Badge**: UI indicator in the top navigation bar reflecting WhatsApp connectivity.
 
 ### Product Management
 

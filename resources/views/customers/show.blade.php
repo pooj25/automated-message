@@ -38,6 +38,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
+        <!-- Customer Name -->
         <div>
             <p class="text-sm font-bold text-slate-400 uppercase mb-2">
                 Customer Name
@@ -48,6 +49,7 @@
             </p>
         </div>
 
+        <!-- Phone Number -->
         <div>
             <p class="text-sm font-bold text-slate-400 uppercase mb-2">
                 Phone Number
@@ -58,6 +60,7 @@
             </p>
         </div>
 
+        <!-- Email -->
         <div>
             <p class="text-sm font-bold text-slate-400 uppercase mb-2">
                 Email
@@ -68,6 +71,7 @@
             </p>
         </div>
 
+        <!-- Status -->
         <div>
             <p class="text-sm font-bold text-slate-400 uppercase mb-2">
                 Status
@@ -84,6 +88,24 @@
             @endif
         </div>
 
+        <!-- Customer Type -->
+        <div>
+            <p class="text-sm font-bold text-slate-400 uppercase mb-2">
+                Customer Type
+            </p>
+
+            @if ($customer->customer_type === 'Permanent Customer')
+                <span class="px-4 py-2 text-sm font-bold rounded-full bg-indigo-100 text-indigo-700">
+                    Permanent Customer
+                </span>
+            @else
+                <span class="px-4 py-2 text-sm font-bold rounded-full bg-amber-100 text-amber-700">
+                    Temporary Customer
+                </span>
+            @endif
+        </div>
+
+        <!-- City -->
         <div>
             <p class="text-sm font-bold text-slate-400 uppercase mb-2">
                 City
@@ -94,6 +116,7 @@
             </p>
         </div>
 
+        <!-- State -->
         <div>
             <p class="text-sm font-bold text-slate-400 uppercase mb-2">
                 State
@@ -104,6 +127,7 @@
             </p>
         </div>
 
+        <!-- Pincode -->
         <div>
             <p class="text-sm font-bold text-slate-400 uppercase mb-2">
                 Pincode
@@ -114,6 +138,7 @@
             </p>
         </div>
 
+        <!-- Created Date -->
         <div>
             <p class="text-sm font-bold text-slate-400 uppercase mb-2">
                 Created Date
@@ -124,6 +149,7 @@
             </p>
         </div>
 
+        <!-- Address -->
         <div class="md:col-span-2">
 
             <p class="text-sm font-bold text-slate-400 uppercase mb-2">

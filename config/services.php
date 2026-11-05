@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    'openwa' => [
+        'url' => env('OPENWA_URL', 'http://localhost:2785'),
+        'api_key' => env('OPENWA_API_KEY', 'owa_k1_4c55b901515813692186149175caf552e99e06ee76dc9d578a6114301703ac87'),
+        'session_id' => env('OPENWA_SESSION_ID', 'd8721c9c-6e77-4be8-bbf8-29732fbbfd9f'),
+        'recipient' => env('OPENWA_RECIPIENT_PHONE', '919876543210'),
+    ],
+
 ];

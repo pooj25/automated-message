@@ -18,5 +18,7 @@ class Customer extends Model
         'state',
         'pincode',
         'status',
+        'customer_type'
+        
     ];
 }
