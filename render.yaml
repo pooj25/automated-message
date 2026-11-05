@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: automated-message-crud
+    runtime: docker
+    plan: free
+    region: singapore
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        generateValue: true
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: DB_DATABASE
+        value: /var/www/html/database/database.sqlite
+      - key: OPENWA_URL
+        value: http://localhost:2785
+      - key: OPENWA_API_KEY
+        value: owa_k1_4c55b901515813692186149175caf552e99e06ee76dc9d578a6114301703ac87
+      - key: OPENWA_SESSION_ID
+        value: d8721c9c-6e77-4be8-bbf8-29732fbbfd9f
+      - key: OPENWA_RECIPIENT_PHONE
+        value: "919566724887"
