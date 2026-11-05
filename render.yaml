@@ -16,7 +16,7 @@ services:
       - key: DB_DATABASE
         value: /var/www/html/database/database.sqlite
       - key: OPENWA_URL
-        value: http://localhost:2785
+        value: https://yummy-symbols-attend.loca.lt
       - key: OPENWA_API_KEY
         value: owa_k1_4c55b901515813692186149175caf552e99e06ee76dc9d578a6114301703ac87
       - key: OPENWA_SESSION_ID
