@@ -46,6 +46,8 @@ class WhatsAppService
             $response = Http::withHeaders([
                 'X-API-Key' => $this->apiKey,
                 'Content-Type' => 'application/json',
+                'Bypass-Tunnel-Reminder' => 'true',
+                'User-Agent' => 'OpenWA-Laravel-Client/1.0',
             ])->timeout(15)->post($endpoint, [
                 'chatId' => $chatId,
                 'text' => $message,
