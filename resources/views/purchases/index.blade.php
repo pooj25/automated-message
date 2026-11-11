@@ -8,7 +8,6 @@
             Purchase <span class="text-gradient">Management</span>
         </h2>
 
-```
     <p class="text-xl text-slate-500 font-light">
         Manage product purchases and stock entries.
     </p>
@@ -22,7 +21,6 @@
         New Purchase
     </a>
 </div>
-```
 
 </div>
 
@@ -39,7 +37,6 @@
                         Invoice
                     </th>
 
-```
                 <th class="px-8 py-6 text-sm font-bold tracking-widest text-slate-500 uppercase">
                     Supplier
                 </th>
@@ -102,7 +99,6 @@
         </tbody>
     </table>
 </div>
-```
 
 </div>
 @endsection

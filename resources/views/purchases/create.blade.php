@@ -8,7 +8,6 @@
             Create <span class="text-gradient">Purchase</span>
         </h2>
 
-```
     <p class="text-xl text-slate-500 font-light">
         Add purchased products and automatically update stock.
     </p>
@@ -197,7 +196,6 @@
         </div>
     </form>
 </div>
-```
 
 </div>
 

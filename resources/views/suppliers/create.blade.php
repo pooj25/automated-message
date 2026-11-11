@@ -12,7 +12,6 @@
         </p>
     </div>
 
-```
 @if ($errors->any())
     <div class="bg-rose-50 border border-rose-200 rounded-2xl p-6 mb-8">
         <ul class="list-disc pl-5 text-rose-700">
@@ -102,7 +101,6 @@
         </div>
     </form>
 </div>
-```
 
 </div>
 @endsection

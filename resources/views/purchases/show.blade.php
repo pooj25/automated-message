@@ -9,7 +9,6 @@
                 Purchase <span class="text-gradient">Details</span>
             </h2>
 
-```
         <p class="text-xl text-slate-500 font-light">
             View complete purchase information.
         </p>
@@ -124,7 +123,6 @@
         </div>
     </div>
 </div>
-```
 
 </div>
 @endsection

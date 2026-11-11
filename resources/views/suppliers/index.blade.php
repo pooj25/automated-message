@@ -12,7 +12,6 @@
         </p>
     </div>
 
-```
 <div class="mt-8 md:mt-0">
     <a href="{{ route('suppliers.create') }}" class="btn-premium shadow-[0_10px_30px_rgba(99,102,241,0.4)]">
         <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -21,7 +20,6 @@
         Add Supplier
     </a>
 </div>
-```
 
 </div>
 
@@ -52,7 +50,6 @@
                 </tr>
             </thead>
 
-```
         <tbody class="divide-y divide-slate-200">
             @forelse ($suppliers as $supplier)
             <tr class="hover:bg-white/60 transition-colors duration-200">
@@ -110,7 +107,6 @@
         </tbody>
     </table>
 </div>
-```
 
 </div>
 @endsection
